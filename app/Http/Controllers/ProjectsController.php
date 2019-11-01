@@ -38,6 +38,12 @@ class ProjectsController extends Controller
     public function store(Request $request)
     {
         // validation
+        request()->validate([
+            'title' => ['required', 'min:3', 'max:255'],
+            'excerpt' => 'required',
+            'body' => 'required'
+
+        ]);
         // clean up
         $project = new Project();
         $project->title = request('title');
@@ -67,9 +73,12 @@ class ProjectsController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit($id)
     {
-        //
+
+        $project = Project::find($id);
+        // find the project associated with the id
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -79,9 +88,23 @@ class ProjectsController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update($id)
     {
         //
+        request()->validate([
+            'title' => ['required', 'min:3', 'max:255'],
+            'excerpt' => 'required',
+            'body' => 'required'
+
+        ]);
+        $project = Project::find($id);
+
+        $project->title = request('title');
+        $project->excerpt = request('excerpt');
+        $project->body = request('body');
+
+        $project->save();
+        return redirect('/projects/' . $project->id);
     }
 
     /**
