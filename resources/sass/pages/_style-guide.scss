@@ -1,0 +1,54 @@
+.p-style-guide-colors {
+    &__card {
+        height: 200px;
+        width: 200px;
+        &--primary-light {
+            background-color: $color-primary-light;
+        }
+        &--primary {
+            background-color: $color-primary;
+        }
+        &--primary-dark {
+            background-color: $color-primary-dark;
+        }
+        &--secondary {
+            background-color: $color-secondary;
+        }
+        &--secondary-dark {
+            background-color: $color-secondary-dark;
+        }
+        &--tertiary {
+            background-color: $color-tertiary;
+        }
+        &--white {
+            background-color: $color-white;
+            border: 1px solid $color-gray-dark;
+        }
+        &--white-dark {
+            background-color: $color-white-dark;
+        }
+        &--gray-lighter {
+            background-color: $color-gray-lighter;
+        }
+        &--gray-light {
+            background-color: $color-gray-light;
+        }
+        &--gray {
+             background-color: $color-gray;
+        }
+        &--gray-dark {
+            background-color: $color-gray-dark;
+        }
+        &--black {
+            background-color: $color-black;
+        }
+    }
+
+    &__paragraph {
+        color: $color-white;
+
+        &--gray-dark {
+            color: $color-gray-dark;
+        }
+    }
+}

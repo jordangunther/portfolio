@@ -1,0 +1,13 @@
+.l-navigation {
+    &__list {
+        list-style: none
+    }
+    &__item {
+        &:not(:last-child) {
+            margin-right: 10rem;
+        }
+    }
+    &__link {
+        text-decoration: none;
+    }
+}

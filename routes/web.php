@@ -14,3 +14,19 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/contact', function () {
+    return view('contact');
+});
+Route::get('/style-guide', function () {
+    return view('style-guide');
+});
+
+Route::get('/projects', 'ProjectsController@index');
+Route::post('/projects', 'ProjectsController@store');
+Route::get('/projects/create', 'ProjectsController@create');
+Route::get('/projects/{project}', 'ProjectsController@show');
+
+
+
+
+

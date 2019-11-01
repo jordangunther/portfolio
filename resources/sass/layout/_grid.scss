@@ -1,0 +1,12 @@
+.l-grid {
+    display: grid;
+    grid-gap: 3rem;
+
+    &--col-3 {
+        grid-template-columns: repeat(3, 1fr);
+
+        @include respond(phone) {
+            grid-template-columns: 1fr;
+        }
+    }
+}

@@ -1,0 +1,35 @@
+/*This resets all browser default values te every single element to whatever we set here.*/
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    // Best practice is to create a font size percentage that defines 1 rem as 10 px so that you can calculate values easily. 1.6 rem = 16px;
+    // This defines what 1rem is
+    font-size: 62.5%; //1 rem = 10px 10px/16px = 62.5%
+
+    @include respond(tab-land) { // width < 1200?
+        font-size: 56.25%; //1 rem = 9px 9px/16px = 56.25%
+    }
+
+    @include respond(tab-port) { // width < 900?
+        font-size: 50%; //1 rem = 8px 8px/16px = 50%
+    }
+
+    @include respond(big-desktop) { // width > 1200?
+        font-size: 75%; //1 rem = 12px 12px/16px = 75%
+    }
+}
+
+body {
+    box-sizing: border-box;  /* Changing box model so that borders and paddings are now included in the total height and width of elements */
+}
+
+::selection {
+    background-color: $color-primary;
+    color: $color-white;
+}

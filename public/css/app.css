@@ -1,0 +1,205 @@
+/*
+0 - 600px: Phone
+600 - 900px: Tablet portrait
+900 - 1200px: Tablet landscape
+[1200 - 1800]: Normal styles apply
+1800 +: Big desktop
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography -> general Layout + grid -> page layout -> components
+
+Using em on media queries is best practice https://zellwk.com/blog/media-query-units/
+1em = 16 px
+
+ */
+
+/*This resets all browser default values te every single element to whatever we set here.*/
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media only screen and (min-width: 112.5em) {
+  html {
+    font-size: 75%;
+  }
+}
+
+body {
+  box-sizing: border-box;
+  /* Changing box model so that borders and paddings are now included in the total height and width of elements */
+}
+
+::-moz-selection {
+  background-color: #26532B;
+  color: #FEFFFE;
+}
+
+::selection {
+  background-color: #26532B;
+  color: #FEFFFE;
+}
+
+body {
+  font-family: "lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #163019;
+}
+
+.u-center-text {
+  text-align: center !important;
+}
+
+.u-margin-bottom-tiny {
+  margin-bottom: 1rem !important;
+}
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important;
+}
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem !important;
+}
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem !important;
+}
+
+.u-margin-top-big {
+  margin-top: 8rem !important;
+}
+
+.u-margin-top-huge {
+  margin-top: 10rem !important;
+}
+
+.l-flex {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.l-flex__item:not(:last-child) {
+  margin-right: 1em;
+}
+
+.l-grid {
+  display: grid;
+  grid-gap: 3rem;
+}
+
+.l-grid--col-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media only screen and (max-width: 37.5em) {
+  .l-grid--col-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.l-navigation__list {
+  list-style: none;
+}
+
+.l-navigation__item:not(:last-child) {
+  margin-right: 10rem;
+}
+
+.l-navigation__link {
+  text-decoration: none;
+}
+
+.p-style-guide-colors__card {
+  height: 200px;
+  width: 200px;
+}
+
+.p-style-guide-colors__card--primary-light {
+  background-color: #36763d;
+}
+
+.p-style-guide-colors__card--primary {
+  background-color: #26532B;
+}
+
+.p-style-guide-colors__card--primary-dark {
+  background-color: #163019;
+}
+
+.p-style-guide-colors__card--secondary {
+  background-color: #D69B61;
+}
+
+.p-style-guide-colors__card--secondary-dark {
+  background-color: #5B3829;
+}
+
+.p-style-guide-colors__card--tertiary {
+  background-color: #FA7921;
+}
+
+.p-style-guide-colors__card--white {
+  background-color: #FEFFFE;
+  border: 1px solid #363537;
+}
+
+.p-style-guide-colors__card--white-dark {
+  background-color: #DFDFDF;
+}
+
+.p-style-guide-colors__card--gray-lighter {
+  background-color: #D2CBCB;
+}
+
+.p-style-guide-colors__card--gray-light {
+  background-color: #AAAAAA;
+}
+
+.p-style-guide-colors__card--gray {
+  background-color: #595758;
+}
+
+.p-style-guide-colors__card--gray-dark {
+  background-color: #363537;
+}
+
+.p-style-guide-colors__card--black {
+  background-color: #131B23;
+}
+
+.p-style-guide-colors__paragraph {
+  color: #FEFFFE;
+}
+
+.p-style-guide-colors__paragraph--gray-dark {
+  color: #363537;
+}
+
