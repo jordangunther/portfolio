@@ -14,7 +14,11 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects = Project::latest()->get();
+        if (request('tag')) {
+            $projects = Tag::where('name', request('tag'))->firstOrFail()->projects;
+        } else {
+            $projects = Project::latest()->get();
+        }
 
         return view('projects.index', ['projects' => $projects]);
     }
@@ -37,21 +41,10 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        // validation
-        request()->validate([
-            'title' => ['required', 'min:3', 'max:255'],
-            'excerpt' => 'required',
-            'body' => 'required'
+        // validate and create
+        Project::create($this->validateProject());
 
-        ]);
-        // clean up
-        $project = new Project();
-        $project->title = request('title');
-        $project->excerpt = request('excerpt');
-        $project->body = request('body');
-
-        $project->save();
-        return redirect('/projects');
+        return redirect(route('projects.index'));
     }
 
     /**
@@ -60,10 +53,8 @@ class ProjectsController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Project $project)
     {
-        $project = Project::find($id);
-
         return view('projects.show', ['project' => $project]);
     }
 
@@ -73,11 +64,8 @@ class ProjectsController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-
-        $project = Project::find($id);
-        // find the project associated with the id
         return view('projects.edit', compact('project'));
     }
 
@@ -88,23 +76,12 @@ class ProjectsController extends Controller
      * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Project $project)
     {
-        //
-        request()->validate([
-            'title' => ['required', 'min:3', 'max:255'],
-            'excerpt' => 'required',
-            'body' => 'required'
+        // validate and update
+        $project->update($this->validateProject());
 
-        ]);
-        $project = Project::find($id);
-
-        $project->title = request('title');
-        $project->excerpt = request('excerpt');
-        $project->body = request('body');
-
-        $project->save();
-        return redirect('/projects/' . $project->id);
+        return redirect($project->path());
     }
 
     /**
@@ -116,5 +93,13 @@ class ProjectsController extends Controller
     public function destroy(Project $project)
     {
         //
+    }
+
+    protected function validateProject() {
+        return request()->validate([
+            'title' => ['required', 'min:3', 'max:255'],
+            'excerpt' => 'required',
+            'body' => 'required'
+        ]);
     }
 }

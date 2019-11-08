@@ -21,10 +21,10 @@ Route::get('/style-guide', function () {
     return view('style-guide');
 });
 
-Route::get('/projects', 'ProjectsController@index');
+Route::get('/projects', 'ProjectsController@index')->name('projects.index');
 Route::post('/projects', 'ProjectsController@store');
 Route::get('/projects/create', 'ProjectsController@create');
-Route::get('/projects/{project}', 'ProjectsController@show');
+Route::get('/projects/{project}', 'ProjectsController@show')->name('projects.show');
 Route::get('/projects/{project}/edit', 'ProjectsController@edit');
 Route::put('/projects/{project}', 'ProjectsController@update');
 
