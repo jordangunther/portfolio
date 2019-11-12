@@ -1,15 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Style Guide</title>
-    <link href="/css/app.css" rel="stylesheet">
+@extends('layouts.app')
 
-</head>
-<body>
+@section('content')
     <section class="p-style-guide-colors">
         <div class="l-flex">
             <div class="p-style-guide-colors__card p-style-guide-colors__card--primary l-flex__item">
@@ -47,5 +38,4 @@
             </div>
         </div>
     </section>
-</body>
-</html>
+@endsection

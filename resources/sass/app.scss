@@ -1,29 +1,8 @@
-// Abstracts
-// Global mixins, functions, variables and other reusable items that can be used in all partials
-@import 'abstracts/functions';
-@import 'abstracts/mixins';
-@import 'abstracts/variables';
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Base
-// Global styles, resets, typographies, utility classes that can be used on all pages
-@import 'base/animations';
-@import 'base/base';
-@import 'base/typography';
-@import 'base/utilities';
+// Variables
+@import 'variables';
 
-// Components
-// Styles for self-contained components
-
-
-// Layout
-// Styles for larger layout components like footers, grids, headers, navigations
-@import 'layout/flex';
-@import 'layout/footer';
-@import 'layout/grid';
-@import 'layout/header';
-@import 'layout/navigation';
-
-// Pages
-// Styles specific to the page. Will typically be sections with paddings. May also include components that are one offs or won't be used on other pages.
-@import 'pages/home';
-@import 'pages/style-guide';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
