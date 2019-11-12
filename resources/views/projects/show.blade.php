@@ -5,6 +5,7 @@
     <div>
         {{ $project->body }}
     </div>
+    <a href="{{ $project->path() }}/edit">Edit</a>
 
     <p>
 {{--        @foreach ($project->tags as $tag)--}}

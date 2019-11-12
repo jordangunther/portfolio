@@ -35,6 +35,20 @@
                 </div>
 
             </form>
+            <form method="POST" action="/projects/{{ $project->id }}">
+                @csrf
+                {{--                browser only understands POST so use POST than tell laravel to use DELETE--}}
+                @method('DELETE')
+                <div>
+                    <div>
+                        <button type="submit">Delete</button>
+                    </div>
+                </div>
+
+            </form>
+
+
+
         </div>
     </div>
 @endsection
