@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth')->except(['show','index']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,6 +24,8 @@ class ProjectsController extends Controller
         } else {
             $projects = Project::latest()->get();
         }
+
+//        $projects = Project::where('owner_id', auth()->id())->get();
 
         return view('projects.index', ['projects' => $projects]);
     }
@@ -42,7 +49,7 @@ class ProjectsController extends Controller
     public function store(Request $request)
     {
         // validate and create
-        Project::create($this->validateProject());
+        Project::create($this->validateProject() + ['owner_id' => auth()->id()]);
 
         return redirect(route('projects.index'));
     }
