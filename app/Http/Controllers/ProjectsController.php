@@ -62,6 +62,8 @@ class ProjectsController extends Controller
      */
     public function show(Project $project)
     {
+        //Is the user Authorized to View the Project -> from the ProjectPolicy.php
+        $this->authorize('view', $project);
         return view('projects.show', ['project' => $project]);
     }
 
@@ -85,6 +87,7 @@ class ProjectsController extends Controller
      */
     public function update(Project $project)
     {
+        $this->authorize('view', $project);
         // validate and update
         $project->update($this->validateProject());
 
@@ -99,6 +102,7 @@ class ProjectsController extends Controller
      */
     public function destroy(Project $project)
     {
+        $this->authorize('view', $project);
         $project->delete();
 
         return redirect(route('projects.index'));
