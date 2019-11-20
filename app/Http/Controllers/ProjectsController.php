@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Project;
+use App\Mail\ProjectCreated;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
@@ -49,7 +51,11 @@ class ProjectsController extends Controller
     public function store(Request $request)
     {
         // validate and create
-        Project::create($this->validateProject() + ['owner_id' => auth()->id()]);
+        $project = Project::create($this->validateProject() + ['owner_id' => auth()->id()]);
+
+        \Mail::to('jordankgunther@gmail.com')->send(
+          new ProjectCreated($project)
+        );
 
         return redirect(route('projects.index'));
     }
